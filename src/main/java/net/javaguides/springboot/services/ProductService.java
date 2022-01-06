@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
 public class ProductService {
 
-    @Autowired
+     @Autowired
     private ProductRepository productRepo;
 
     public Product save(Product product){
@@ -28,5 +29,9 @@ public class ProductService {
 
     public void removeOne(Long id) {
         productRepo.deleteById(id);
+    }
+
+    public List<Product> findByName(String name) {
+        return productRepo.findByNameContains(name);
     }
 }
