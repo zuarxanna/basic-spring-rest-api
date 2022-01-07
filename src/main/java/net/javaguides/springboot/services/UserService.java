@@ -29,8 +29,15 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public Iterable<User> findAll(User user) {
+    public Iterable<User> findAll() {
         return userRepo.findAll();
     }
 
+    public User findOne(Long id) {
+        return userRepo.findById(id).get();
+    }
+
+    public void removeOne(Long id) {
+        userRepo.deleteById(id);
+    }
 }
