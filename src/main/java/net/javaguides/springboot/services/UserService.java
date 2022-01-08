@@ -1,14 +1,11 @@
 package net.javaguides.springboot.services;
 
-import net.javaguides.springboot.models.entities.Product;
 import net.javaguides.springboot.models.entities.User;
 import net.javaguides.springboot.models.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -40,4 +37,5 @@ public class UserService {
     public void removeOne(Long id) {
         userRepo.deleteById(id);
     }
+
 }

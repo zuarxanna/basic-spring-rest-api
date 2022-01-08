@@ -1,33 +1,37 @@
 package net.javaguides.springboot.models.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
 import java.io.Serializable;
 
 @Entity
 @Table( name = "users")
 public class User implements Serializable {
-    private static final Long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message="Firstname is required!")
     @Column(name = "first_name", length=100)
     private String firstname;
 
+    @NotEmpty(message="Lastname is required!")
     @Column(name = "last_name", length=100)
     private String lastname;
 
-    @Column(name = "email", length=100, unique = true)
+    @NotEmpty(message="Email is required!")
+    @Column(name = "email", length=100)
     private String email;
 
+    @NotEmpty(message="Email is required!")
     @Column(name = "password", length=100)
     private String password;
 
     public User() {
     }
 
-    public User(Long id, String firstname, String last_name, String email, String password) {
+    public User(Long id, String firstname, String lastname, String email, String password) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -55,7 +59,7 @@ public class User implements Serializable {
         return lastname;
     }
 
-    public void setLast_name(String lastName) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
